@@ -1,5 +1,6 @@
 const DAYS: [&str; 7] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 use rand::RngExt;
+use std::io;
 
 fn main() {
 	let mut highs : Vec<i32> = vec![72, 68, 75, 81, 79];
@@ -44,8 +45,26 @@ fn main() {
 		hottest.to_string()
 	}
 	let hottest_day = hottest_day(DAYS, &highs);
-	println!("The hottest day is: {}", hottest_day)
+	println!("The hottest day is: {}", hottest_day);
 
+	println!("What is threshold?");
+	let mut input = String::new();
+	io::stdin()
+		.read_line(&mut input)
+		.expect("Failed to read line");
 
+	let threshold = input.trim().parse().expect("Failed to read");
 
+	fn count_above(highs: &Vec<i32>, threshold: i32) -> i32 {
+		let mut count : i32 = 0; 
+		for i in 0..highs.len() {
+			if highs[i] >= threshold {
+				count = count + 1
+				}
+			}
+		count
+		}
+	
+	let count = count_above(&highs, threshold);
+	println!("The number of days above the threshold is: {}", count)
 }
