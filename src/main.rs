@@ -14,19 +14,21 @@ fn main() {
         highs.push(temp);
 	}
 
-//	for i in 0..DAYS.len() {
-//		print!("{}: {}", DAYS[i], highs[i])
-//		};
+	println!("List after new temps are added:");
 
+	for i in 0..DAYS.len() {
+		println!("{}: {}", DAYS[i], highs[i])
+		};
 
-	fn average_temp(log: &Vec<i32>) -> f64 {
-		let mut average : f64 = 0.0; 
+	fn average_temp(highs: &Vec<i32>) -> f64 { 
 		let mut total : i32 = 0;
 		for i in 0..highs.len() {
 			total = total + highs[i]
 			}
-		average = (total / highs.len()).into()
+		let average = total as f64 / highs.len() as f64;
+		average
 	}
 
+	let average_temp = average_temp(&highs);
 	println!("The average is: {}", average_temp)
 }
