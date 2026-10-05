@@ -30,5 +30,22 @@ fn main() {
 	}
 
 	let average_temp = average_temp(&highs);
-	println!("The average is: {}", average_temp)
+	println!("The average is: {}", average_temp);
+
+	fn hottest_day(DAYS_var: [&str; 7], highs: &[i32]) -> String {
+		let mut hottest = DAYS[0];
+		let mut temp = highs[0];
+		for i in 0..DAYS.len() {
+			if highs[i] > temp {
+				hottest = DAYS[i];
+				temp = highs[i]
+				}
+			}
+		hottest.to_string()
+	}
+	let hottest_day = hottest_day(DAYS, &highs);
+	println!("The hottest day is: {}", hottest_day)
+
+
+
 }
